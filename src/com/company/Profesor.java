@@ -7,6 +7,13 @@ public class Profesor {
     private Integer antiguedad;
     private Integer codigoProfesor;
 
+    public Profesor(String nombre, String apellido, Integer antiguedad, Integer codigoProfesor) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.antiguedad = antiguedad;
+        this.codigoProfesor = codigoProfesor;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -48,5 +55,5 @@ public class Profesor {
             return false;
         }
     }
-    
+
 }
