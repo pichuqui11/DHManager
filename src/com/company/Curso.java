@@ -8,15 +8,25 @@ public class Curso {
     private Integer codigoCurso;
     private ProfesorTitular unProfesorTitular;
     private ProfesorAdjunto unProfesorAdjunto;
+    private Integer cupoMaximo;
     private List<Alumno> listaDeAlumnos;
 
 
-    public Curso(String nombre, Integer codigoCurso, ProfesorTitular unProfesorTitular, ProfesorAdjunto unProfesorAdjunto, List<Alumno> listaDeAlumnos) {
+    public Curso(String nombre, Integer codigoCurso, ProfesorTitular unProfesorTitular, ProfesorAdjunto unProfesorAdjunto, Integer cupoMaximo, List<Alumno> listaDeAlumnos) {
         this.nombre = nombre;
         this.codigoCurso = codigoCurso;
         this.unProfesorTitular = unProfesorTitular;
         this.unProfesorAdjunto = unProfesorAdjunto;
+        this.cupoMaximo = cupoMaximo;
         this.listaDeAlumnos = listaDeAlumnos;
+    }
+
+    public Integer getCupoMaximo() {
+        return cupoMaximo;
+    }
+
+    public void setCupoMaximo(Integer cupoMaximo) {
+        this.cupoMaximo = cupoMaximo;
     }
 
     public String getNombre() {
@@ -64,9 +74,29 @@ public class Curso {
         Curso curso = (Curso) obj;
         if (this.getCodigoCurso().equals(curso.getCodigoCurso())) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
+
+    private Boolean hayCupoDisponible() {
+    return this.listaDeAlumnos.size()<this.cupoMaximo;
+    }
+
+    public Boolean agregarUnAlumno(Alumno unAlumno) {
+        if (hayCupoDisponible()){
+            return true;
+        }else {
+             return false;
+        }
+    }
+
+    //TODO
+    ///// falta agregar al alumno
+
+
+
+    public void eliminarAlumno(Alumno unAlumno)
+
 
 }
