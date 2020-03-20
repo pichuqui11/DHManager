@@ -20,8 +20,8 @@ public class Alumno {
 
     @Override
     public boolean equals(Object obj) {
-        Alumno unAlumno = (Alumno) obj;
-        if (this.codigoAlumno.equals(unAlumno.codigoAlumno)) {
+        Alumno alumno = (Alumno) obj;
+        if (this.codigoAlumno.equals(alumno.codigoAlumno)) {
             return true;
         }else{
             return false;

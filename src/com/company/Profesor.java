@@ -1,6 +1,6 @@
 package com.company;
 
-public class Profesor {
+abstract class Profesor {
 
     private String nombre;
     private String apellido;
@@ -48,8 +48,8 @@ public class Profesor {
 
     @Override
     public boolean equals(Object obj) {
-        Profesor  unProfesor = (Profesor) obj;
-        if (this.getCodigoProfesor().equals(unProfesor.getCodigoProfesor())) {
+        Profesor  profesor = (Profesor) obj;
+        if (this.getCodigoProfesor().equals(profesor.getCodigoProfesor())) {
             return true;
         }else{
             return false;

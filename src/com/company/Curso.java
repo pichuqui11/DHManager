@@ -61,8 +61,8 @@ public class Curso {
 
     @Override
     public boolean equals(Object obj) {
-        Curso unCurso = (Curso) obj;
-        if (this.getCodigoCurso().equals(unCurso.getCodigoCurso())) {
+        Curso curso = (Curso) obj;
+        if (this.getCodigoCurso().equals(curso.getCodigoCurso())) {
             return true;
         }else{
             return false;
