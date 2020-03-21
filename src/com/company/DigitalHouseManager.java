@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.List;
 
-public class DigitalHouseManager{
+public class DigitalHouseManager {
 
     private List<Alumno> listaDeAlumnos;
     private List<Profesor> listaDeProfesores;
@@ -31,7 +31,8 @@ public class DigitalHouseManager{
                 cursoAEncontrar = unCurso;
                 break;
             }
-        } return cursoAEncontrar;
+        }
+        return cursoAEncontrar;
     }
 
     //METODO PARA BUSCAR ALUMNO POR CODIGO.
@@ -43,7 +44,8 @@ public class DigitalHouseManager{
                 alumnoAEncontrar = alumno;
                 break;
             }
-        } return alumnoAEncontrar;
+        }
+        return alumnoAEncontrar;
     }
 
     //METODO PARA BUSCAR PROFESOR POR CODIGO.
@@ -55,11 +57,9 @@ public class DigitalHouseManager{
                 profesorAEncontrar = unProfesor;
                 break;
             }
-        } return profesorAEncontrar;
+        }
+        return profesorAEncontrar;
     }
-
-
-
 
 
     // METODO PARA ELIMINAR CURSO POR CODIGO
@@ -69,7 +69,7 @@ public class DigitalHouseManager{
     }
 
     public void bajaCurso(Integer codigoCurso) {
-      eliminarCruso(buscarCurso(codigoCurso));
+        eliminarCruso(buscarCurso(codigoCurso));
 
 
     }
@@ -102,8 +102,15 @@ public class DigitalHouseManager{
     }
 
     public void inscribirAlumno(Integer codigoAlumno, Integer codigoCurso) {
-        buscarCurso(codigoCurso);
-        buscarAlumno(codigoAlumno);
+        Curso cursoAInscribir = buscarCurso(codigoCurso);
+        Alumno alumnoAInscribir = buscarAlumno(codigoAlumno);
+        if (cursoAInscribir.hayCupoDisponible()) {
+            Inscripcion unaInscripcion = new Inscripcion(alumnoAInscribir, cursoAInscribir);
+            listaDeInscripciones.add(unaInscripcion);
+            System.out.println("Inscripcion realizada");
+        } else {
+            System.out.println("No hay cupo disponible para la inscripción solicitada");
+        }
 
     }
 
