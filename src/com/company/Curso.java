@@ -80,23 +80,23 @@ public class Curso {
     }
 
     private Boolean hayCupoDisponible() {
-    return this.listaDeAlumnos.size()<this.cupoMaximo;
+        return this.listaDeAlumnos.size() < this.cupoMaximo;
     }
 
     public Boolean agregarUnAlumno(Alumno unAlumno) {
-        if (hayCupoDisponible()){
+        if (hayCupoDisponible()) {
+            this.listaDeAlumnos.add(unAlumno);
             return true;
-        }else {
-             return false;
+        } else {
+            return false;
         }
+
     }
 
-    //TODO
-    ///// falta agregar al alumno
+    public void eliminarAlumno(Alumno unAlumno) {
+        this.listaDeAlumnos.remove(unAlumno);
 
-
-
-    public void eliminarAlumno(Alumno unAlumno)
+    }
 
 
 }
