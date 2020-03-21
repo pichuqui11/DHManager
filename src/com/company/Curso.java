@@ -79,7 +79,7 @@ public class Curso {
         }
     }
 
-    private Boolean hayCupoDisponible() {
+    public Boolean hayCupoDisponible() {
         return this.listaDeAlumnos.size() < this.cupoMaximo;
     }
 

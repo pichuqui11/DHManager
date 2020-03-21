@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.List;
 
-public class DigitalHouseManager {
+public class DigitalHouseManager{
 
     private List<Alumno> listaDeAlumnos;
     private List<Profesor> listaDeProfesores;
@@ -22,22 +22,54 @@ public class DigitalHouseManager {
         System.out.println("Curso ingresado exitosamente");
     }
 
+    //METODO PARA BUSCAR CURSO POR CODIGO.
+
+    public Curso buscarCurso(Integer codigoCurso) {
+        Curso cursoAEncontrar = null;
+        for (Curso unCurso : this.listaDeCursos) {
+            if (unCurso.getCodigoCurso().equals(codigoCurso)) {
+                cursoAEncontrar = unCurso;
+                break;
+            }
+        } return cursoAEncontrar;
+    }
+
+    //METODO PARA BUSCAR ALUMNO POR CODIGO.
+
+    public Alumno buscarAlumno(Integer codigoAlumno) {
+        Alumno alumnoAEncontrar = null;
+        for (Alumno alumno : this.listaDeAlumnos) {
+            if (alumno.getCodigoAlumno().equals(codigoAlumno)) {
+                alumnoAEncontrar = alumno;
+                break;
+            }
+        } return alumnoAEncontrar;
+    }
+
+    //METODO PARA BUSCAR PROFESOR POR CODIGO.
+
+    public Profesor buscarProfesor(Integer codigoProfesor) {
+        Profesor profesorAEncontrar = null;
+        for (Profesor unProfesor : this.listaDeProfesores) {
+            if (unProfesor.getCodigoProfesor().equals(codigoProfesor)) {
+                profesorAEncontrar = unProfesor;
+                break;
+            }
+        } return profesorAEncontrar;
+    }
+
+
+
+
+
+    // METODO PARA ELIMINAR CURSO POR CODIGO
 
     public void eliminarCruso(Curso unCurso) {
         this.listaDeCursos.remove(unCurso);
     }
 
     public void bajaCurso(Integer codigoCurso) {
-        Curso cursoAEliminar = null;
-
-        for (Curso unCurso : this.listaDeCursos) {
-            if (unCurso.getCodigoCurso().equals(codigoCurso)) {
-                cursoAEliminar = unCurso;
-                break;
-
-            }
-        }
-        eliminarCruso(cursoAEliminar);
+      eliminarCruso(buscarCurso(codigoCurso));
 
 
     }
@@ -59,23 +91,21 @@ public class DigitalHouseManager {
     }
 
     public void bajaProfesor(Integer codigoProfesor) {
-        Profesor profesorAEliminar = null;
-
-        for (Profesor unProfesor : this.listaDeProfesores) {
-            if (unProfesor.getCodigoProfesor().equals(codigoProfesor)) {
-                profesorAEliminar = unProfesor;
-                break;
-
-            }
-        }
-        eliminarProfesor(profesorAEliminar);
-
+        eliminarProfesor(buscarProfesor(codigoProfesor));
 
     }
-    public void altaAlumno(String nombre, String apellido, Integer codigoAlumno){
-        Alumno alumno = new Alumno(nombre,apellido,codigoAlumno);
+
+    public void altaAlumno(String nombre, String apellido, Integer codigoAlumno) {
+        Alumno alumno = new Alumno(nombre, apellido, codigoAlumno);
         listaDeAlumnos.add(alumno);
         System.out.println("Alumno ingresado exitosamente");
     }
+
+    public void inscribirAlumno(Integer codigoAlumno, Integer codigoCurso) {
+        buscarCurso(codigoCurso);
+        buscarAlumno(codigoAlumno);
+
+    }
+
 
 }
