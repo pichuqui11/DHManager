@@ -114,5 +114,12 @@ public class DigitalHouseManager {
 
     }
 
+    public void asignarProfesores(Integer codigoCurso, Integer codigoProfesorTitular, Integer codigoProfesorAdjunto){
+      Curso cursoACompletar = buscarCurso(codigoCurso);
+      Profesor profesorTitularAIncluir = buscarProfesor(codigoProfesorTitular);
+      Profesor profesorAdjuntoAIncluir = buscarProfesor(codigoProfesorAdjunto);
+      cursoACompletar.setUnProfesorAdjunto((ProfesorAdjunto) profesorAdjuntoAIncluir);
+      cursoACompletar.setUnProfesorTitular((ProfesorTitular) profesorTitularAIncluir);
+    }
 
 }
