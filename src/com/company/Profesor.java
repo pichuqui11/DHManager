@@ -7,10 +7,10 @@ abstract class Profesor {
     private Integer antiguedad;
     private Integer codigoProfesor;
 
-    public Profesor(String nombre, String apellido, Integer antiguedad, Integer codigoProfesor) {
+    public Profesor(String nombre, String apellido, Integer codigoProfesor) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.antiguedad = antiguedad;
+        antiguedad = 0;
         this.codigoProfesor = codigoProfesor;
     }
 

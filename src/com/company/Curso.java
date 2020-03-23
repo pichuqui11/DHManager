@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Curso {
@@ -12,13 +13,11 @@ public class Curso {
     private List<Alumno> listaDeAlumnos;
 
 
-    public Curso(String nombre, Integer codigoCurso, ProfesorTitular unProfesorTitular, ProfesorAdjunto unProfesorAdjunto, Integer cupoMaximo, List<Alumno> listaDeAlumnos) {
+    public Curso(String nombre, Integer codigoCurso, Integer cupoMaximo){
         this.nombre = nombre;
         this.codigoCurso = codigoCurso;
-        this.unProfesorTitular = unProfesorTitular;
-        this.unProfesorAdjunto = unProfesorAdjunto;
         this.cupoMaximo = cupoMaximo;
-        this.listaDeAlumnos = listaDeAlumnos;
+        this.listaDeAlumnos = new ArrayList<>();
     }
 
     public Integer getCupoMaximo() {

@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DigitalHouseManager {
@@ -9,15 +10,15 @@ public class DigitalHouseManager {
     private List<Curso> listaDeCursos;
     private List<Inscripcion> listaDeInscripciones;
 
-    public DigitalHouseManager(List<Alumno> listaDeAlumnos, List<Profesor> listaDeProfesores, List<Curso> listaDeCursos, List<Inscripcion> listaDeInscripciones) {
-        this.listaDeAlumnos = listaDeAlumnos;
-        this.listaDeProfesores = listaDeProfesores;
-        this.listaDeCursos = listaDeCursos;
-        this.listaDeInscripciones = listaDeInscripciones;
+    public DigitalHouseManager () {
+        this.listaDeAlumnos = new ArrayList<>();
+        this.listaDeProfesores = new ArrayList<>();
+        this.listaDeCursos = new ArrayList<>();
+        this.listaDeInscripciones = new ArrayList<>();
     }
 
     public void altaCurso(String nombre, Integer codigoCurso, Integer cupoMaximoDealumnos) {
-        Curso unCurso = new Curso(nombre, codigoCurso, null, null, cupoMaximoDealumnos, listaDeAlumnos);
+        Curso unCurso = new Curso(nombre, codigoCurso, cupoMaximoDealumnos);
         listaDeCursos.add(unCurso);
         System.out.println("Curso ingresado exitosamente");
     }
@@ -70,19 +71,20 @@ public class DigitalHouseManager {
 
     public void bajaCurso(Integer codigoCurso) {
         eliminarCruso(buscarCurso(codigoCurso));
+        System.out.println("Curso dado de baja");
 
 
     }
 
     public void altaProfesorAdjunto(String nombre, String apellido, Integer codigoProfesor, Integer cantidadDeHoras) {
-        ProfesorAdjunto profesorAdjunto = new ProfesorAdjunto(nombre, apellido, 0, codigoProfesor, cantidadDeHoras);
-        listaDeProfesores.add(profesorAdjunto);
+        ProfesorAdjunto profesorAdjunto = new ProfesorAdjunto(nombre, apellido, codigoProfesor, cantidadDeHoras);
+        this.listaDeProfesores.add(profesorAdjunto);
         System.out.println("Profesor Adjunto ingresado exitosamente");
     }
 
     public void altaProfesorTitular(String nombre, String apellido, Integer codigoProfesor, String especialidad) {
-        ProfesorTitular profesorTitular = new ProfesorTitular(nombre, apellido, 0, codigoProfesor, especialidad);
-        listaDeProfesores.add(profesorTitular);
+        ProfesorTitular profesorTitular = new ProfesorTitular(nombre, apellido, codigoProfesor, especialidad);
+        this.listaDeProfesores.add(profesorTitular);
         System.out.println("Profesor Titular ingresado exitosamente");
     }
 
@@ -92,7 +94,7 @@ public class DigitalHouseManager {
 
     public void bajaProfesor(Integer codigoProfesor) {
         eliminarProfesor(buscarProfesor(codigoProfesor));
-
+        System.out.println("Profesor dado de baja");
     }
 
     public void altaAlumno(String nombre, String apellido, Integer codigoAlumno) {
@@ -106,7 +108,9 @@ public class DigitalHouseManager {
         Alumno alumnoAInscribir = buscarAlumno(codigoAlumno);
         if (cursoAInscribir.hayCupoDisponible()) {
             Inscripcion unaInscripcion = new Inscripcion(alumnoAInscribir, cursoAInscribir);
-            listaDeInscripciones.add(unaInscripcion);
+            cursoAInscribir.getListaDeAlumnos().add(alumnoAInscribir);
+            this.listaDeInscripciones.add(unaInscripcion);
+
             System.out.println("Inscripcion realizada");
         } else {
             System.out.println("No hay cupo disponible para la inscripción solicitada");
@@ -119,7 +123,9 @@ public class DigitalHouseManager {
       Profesor profesorTitularAIncluir = buscarProfesor(codigoProfesorTitular);
       Profesor profesorAdjuntoAIncluir = buscarProfesor(codigoProfesorAdjunto);
       cursoACompletar.setUnProfesorAdjunto((ProfesorAdjunto) profesorAdjuntoAIncluir);
+        System.out.println("Profesor Adjunto asignado");
       cursoACompletar.setUnProfesorTitular((ProfesorTitular) profesorTitularAIncluir);
+        System.out.println("Profesor Titular asignado");
     }
 
 }
