@@ -10,7 +10,7 @@ public class DigitalHouseManager {
     private List<Curso> listaDeCursos;
     private List<Inscripcion> listaDeInscripciones;
 
-    public DigitalHouseManager () {
+    public DigitalHouseManager() {
         this.listaDeAlumnos = new ArrayList<>();
         this.listaDeProfesores = new ArrayList<>();
         this.listaDeCursos = new ArrayList<>();
@@ -118,14 +118,31 @@ public class DigitalHouseManager {
 
     }
 
-    public void asignarProfesores(Integer codigoCurso, Integer codigoProfesorTitular, Integer codigoProfesorAdjunto){
-      Curso cursoACompletar = buscarCurso(codigoCurso);
-      Profesor profesorTitularAIncluir = buscarProfesor(codigoProfesorTitular);
-      Profesor profesorAdjuntoAIncluir = buscarProfesor(codigoProfesorAdjunto);
-      cursoACompletar.setUnProfesorAdjunto((ProfesorAdjunto) profesorAdjuntoAIncluir);
+    public void asignarProfesores(Integer codigoCurso, Integer codigoProfesorTitular, Integer codigoProfesorAdjunto) {
+        Curso cursoACompletar = buscarCurso(codigoCurso);
+        Profesor profesorTitularAIncluir = buscarProfesor(codigoProfesorTitular);
+        Profesor profesorAdjuntoAIncluir = buscarProfesor(codigoProfesorAdjunto);
+        cursoACompletar.setUnProfesorAdjunto((ProfesorAdjunto) profesorAdjuntoAIncluir);
         System.out.println("Profesor Adjunto asignado");
-      cursoACompletar.setUnProfesorTitular((ProfesorTitular) profesorTitularAIncluir);
+        cursoACompletar.setUnProfesorTitular((ProfesorTitular) profesorTitularAIncluir);
         System.out.println("Profesor Titular asignado");
     }
 
+
+    public void inscribirAlumnoImportado(Integer codigoCurso) throws Exception {
+        LectorDeArchivosCSV2 lector = new LectorDeArchivosCSV2();
+        lector.importadorDeAlumnos();
+        Curso cursoAInscribir = buscarCurso(codigoCurso);
+        for (Alumno alumno : lector.listaDeAlumnosImportados) {
+            if (cursoAInscribir.hayCupoDisponible()) {
+                Inscripcion unaInscripcion = new Inscripcion(alumno, cursoAInscribir);
+                cursoAInscribir.getListaDeAlumnos().add(alumno);
+                this.listaDeInscripciones.add(unaInscripcion);
+
+                System.out.println("Inscripcion realizada");
+            } else {
+                System.out.println("No hay cupo disponible para la inscripción solicitada");
+            }
+        }
+    }
 }
