@@ -145,4 +145,12 @@ public class DigitalHouseManager {
             }
         }
     }
+
+    public void modificarCupoCurso(Integer codigoCurso, Integer nuevoCupo){
+        Curso cursoAmodificar = buscarCurso(codigoCurso);
+        cursoAmodificar.setCupoMaximo(nuevoCupo);
+        System.out.println("El cupo a sido modificado");
+    }
+
+
 }

@@ -31,6 +31,7 @@ public class Main {
         manager.bajaProfesor(1);
         manager.bajaCurso(20001);
 
+        manager.modificarCupoCurso(20002,50);
         manager.inscribirAlumnoImportado(20002);
 
     }
