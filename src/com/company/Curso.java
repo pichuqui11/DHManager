@@ -3,6 +3,10 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
+// PARTE E
+// se debe modificar la clase CURSO agregando los atributos, nombre, codigo de curso, profesor titular, profesor adjunto y lista de alumnos.
+
+
 public class Curso {
 
     private String nombre;

@@ -34,7 +34,7 @@ public class Main {
         manager.modificarCupoCurso(20002,50);
         manager.inscribirAlumnoImportado(20002);
 
-
+        
 
     }
 }

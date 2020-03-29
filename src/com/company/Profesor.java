@@ -2,6 +2,11 @@ package com.company;
 
 abstract class Profesor {
 
+
+    // PARTE D
+    // La clase Profesor no se debe modificar, se deben crear nos nuevas clases, "Profesor titular"  y "Profesor Adjunto" que van a heredar los atributos y metodos
+    // de la clase Profesor.
+
     private String nombre;
     private String apellido;
     private Integer antiguedad;
